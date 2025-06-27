@@ -710,7 +710,7 @@ def update_dissolved_oxygen():
         if not latest_data:
             return jsonify({
                 "code": 404,
-                "message": "未找到该断面的数据"
+                "message": "no find"
             })
 
         # 创建新记录
