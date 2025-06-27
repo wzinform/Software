@@ -24,4 +24,5 @@ def get_fish_prices():
         })
 
     result = [{'name': name, 'prices': prices} for name, prices in fish_map.items()]
+    print("okokokok")
     return jsonify(result)

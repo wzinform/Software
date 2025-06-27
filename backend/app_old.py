@@ -995,3 +995,4 @@ def get_advice():
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)  # 禁用自动重载，这样更容易调试
+    print("hahah")

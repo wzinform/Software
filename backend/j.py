@@ -153,4 +153,4 @@ if __name__ == "__main__":
     #
     # # 处理并导入数据
     # process_json_files(JSON_FOLDER_PATH, DB_CONFIG, SQL)
-    print("finish!")
+print("merge!here!")

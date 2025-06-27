@@ -13,7 +13,7 @@ completion = client.chat.completions.create(
     model="qwen-plus",
     messages=[
         {"role": "system", "content": "你是一个养殖渔场的专家，你会通过天气信息和渔场的水文信息给养殖户智能建议"},
-        {"role": "user", "content": "你是谁？"},
+        {"role": "user", "content": "Who are you？"},
     ],
     # Qwen3模型通过enable_thinking参数控制思考过程（开源版默认True，商业版默认False）
     # 使用Qwen3开源版模型时，若未启用流式输出，请将下行取消注释，否则会报错

@@ -276,5 +276,5 @@ with open(output_filename, 'w', encoding='utf-8-sig', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(csv_headers)
     writer.writerows(merged_rows)
-
+print("脚本结束！")
 print(f"\n🎉 所有 JSON 文件已导出到：{output_filename}")
