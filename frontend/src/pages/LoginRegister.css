@@ -1,0 +1,151 @@
+.form-container {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    background-color: #f7fcfb;
+    box-shadow: 0 6px 12px rgba(26, 37, 57, 0.1);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a2539;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 输入框组 */
+  .form-group {
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  
+  /* 标题 */
+  .form-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #1a2539;
+    font-weight: 600;
+    user-select: none;
+  }
+  
+  /* 输入框样式 */
+  .input-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.8px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1a2539;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline-offset: 2px;
+    outline-color: transparent;
+  }
+  
+  .input-field:focus {
+    border-color: #64ffda;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+    outline-color: #64ffda;
+    outline-style: solid;
+  }
+  
+  /* 密码框组，右侧显示切换按钮 */
+  .password-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-group .input-field {
+    flex-grow: 1;
+    padding-right: 2.8rem; /* 预留给按钮 */
+  }
+  
+  /* 密码可视化切换按钮 */
+  .password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #64ffda;
+    transition: color 0.3s ease;
+    user-select: none;
+    padding: 0;
+  }
+  
+  /* 普通输入框（用户名和邮箱）宽度调整，与密码输入框整体长度一致 */
+.input-field:not(.password-input) {
+    width: calc(100% );  /* 减去密码切换按钮+间距的宽度 */
+    box-sizing: border-box;
+  }
+  .password-toggle:hover {
+    color: #38b2ac;
+  }
+  
+  /* 登录/注册按钮 */
+  .query-button {
+    width: 100%;
+    background-color: #1a2539;
+    border: 1px solid #000;
+    color: #64ffda;
+    padding: 14px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(100, 255, 218, 0.3);
+    user-select: none;
+  }
+  
+  .query-button:hover {
+    background-color: rgba(100, 255, 218, 0.15);
+    color: #64ffda;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(100, 255, 218, 0.5);
+  }
+  
+  /* 切换登录注册按钮 */
+  .toggle-text {
+    margin-top: 1.2rem;
+    text-align: center;
+  }
+  
+  .toggle-button {
+    background: none;
+    border: none;
+    color: #1a2539;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    color: #64ffda;
+  }
+  
+  /* select下拉框样式 */
+  select.input-field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: white url("data:image/svg+xml,%3Csvg fill='%2364ffda' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 12px center / 16px 16px;
+    padding-right: 2rem;
+  }
+  
+  /* 响应式微调 */
+  @media (max-width: 420px) {
+    .form-container {
+      margin: 2rem 1rem;
+      padding: 2rem 1.5rem;
+    }
+  }
+  

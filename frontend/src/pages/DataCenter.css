@@ -1,0 +1,371 @@
+.data-center-container {
+  background-color: #0a1a2f;
+  color: #e6f1ff;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+.data-center-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.3);
+  padding-bottom: 10px;
+}
+
+.data-center-header h2 {
+  color: #64ffda;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.timestamp {
+  color: #64ffda;
+  font-size: 1rem;
+}
+
+.data-center-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.data-card {
+  background-color: rgba(16, 32, 58, 0.8);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  transition: all 0.3s ease;
+}
+
+.data-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(100, 255, 218, 0.5);
+}
+
+.card-title {
+  color: #ff5555;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px dashed rgba(255, 85, 85, 0.5);
+  padding-bottom: 8px;
+}
+
+/* 数据总量卡片 */
+.data-volume {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.data-stats {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.stat-item {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #64ffda;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #8892b0;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(#64ffda 0%, #64ffda 70%, #10203a 70%, #10203a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.progress-circle::before {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #10203a;
+}
+
+.progress-value {
+  position: relative;
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #64ffda;
+}
+
+.storage-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.storage-visual {
+  width: 50px;
+  height: 150px;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.5);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.storage-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(100, 255, 218, 0.7);
+  transition: height 0.5s ease;
+}
+
+.storage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+/* 数据中心分布 */
+.data-distribution {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+}
+
+.map-container {
+  height: 300px;
+  position: relative;
+  background-color: rgba(16, 32, 58, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.china-map-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cGF0aCBkPSJNMjAwLDEwMCBMNjAwLDEwMCBMNjUwLDMwMCBMNTAwLDUwMCBMMTUwLDQwMCBaIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTAwLCAyNTUsIDIxOCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.map-marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.marker-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff5555;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
+
+.marker-pulse {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 85, 85, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.marker-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #64ffda;
+  font-size: 0.8rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+/* 硬件信息统计 */
+.hardware-stats {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.hardware-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #64ffda;
+  border-radius: 3px;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: #64ffda;
+  font-size: 14px;
+}
+
+.radar-chart-container {
+  height: 200px;
+}
+
+/* 数据类型统计 */
+.data-types {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.chart-container {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 数据库交互统计 */
+.database-stats {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.database-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.db-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(100, 255, 218, 0.2);
+}
+
+.db-stat-label {
+  color: #8892b0;
+}
+
+.db-stat-value {
+  color: #64ffda;
+  font-weight: bold;
+}
+
+.database-system-label {
+  text-align: center;
+  color: #64ffda;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid rgba(100, 255, 218, 0.5);
+  border-radius: 5px;
+  background-color: rgba(100, 255, 218, 0.1);
+  margin-top: 20px;
+}
+
+/* 传感器信息 */
+.sensor-info {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.sensor-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sensor-table-header {
+  display: flex;
+  background-color: rgba(100, 255, 218, 0.1);
+  padding: 8px 0;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.sensor-table-body {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.sensor-table-row {
+  display: flex;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.sensor-table-row:hover {
+  background-color: rgba(100, 255, 218, 0.05);
+}
+
+.sensor-col {
+  flex: 1;
+  padding: 0 5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

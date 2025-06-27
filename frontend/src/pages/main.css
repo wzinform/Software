@@ -1,0 +1,36 @@
+.react-select__control {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 4px 8px !important;
+  }
+  
+  .react-select__indicators {
+    color: #64748b !important;
+  }
+  
+  .react-select__menu {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  }
+
+  .query-button {
+    width: 100%;
+    background-color: #1a2539;
+    border: 1px solid #000;
+    color: #64ffda;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+  }
+  
+  .query-button:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    transform: translateY(-1px);
+  }
+  

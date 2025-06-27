@@ -1,0 +1,103 @@
+/* 确保 CSS 文件已导入 */
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #0a1a2f;
+  color: #64ffda;
+}
+
+.header {
+  padding: 0 24px;
+  height: 64px;
+  line-height: 64px;
+  background-color: #0a1a2f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid rgba(100, 255, 218, 0.3); /* 加粗底部分割线 */
+  color: #64ffda;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  color: #64ffda;
+}
+
+.site-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff; /* 您之前设置为 #64ffda，但这里与示例不符 */
+}
+
+.main-content {
+  color: #64ffda;
+  padding: 24px;
+  background-color: #0a1a2f;
+  min-height: calc(100vh - 64px);
+  border-top: 4px solid rgba(100, 255, 218, 0.3); /* 加粗顶部分隔线 */
+}
+
+.realtime-card,
+.result-card,
+.status-card,
+.chart-card,
+.map-card {
+  margin-bottom: 24px;
+  background-color: #122b4a; /* 比背景色浅一些的深蓝色 */
+  border-radius: 8px;
+  border: 4px solid #cbd5e1; /* 加粗实线边框 */
+  box-shadow: 0 4px 10px rgba(0, 255, 218, 0.05);
+  transition: all 0.3s ease;
+  color: #64ffda ;
+}
+
+.realtime-card:hover,
+.result-card:hover,
+.status-card:hover,
+.chart-card:hover,
+.map-card:hover {
+  color: #64ffda;
+  box-shadow: 0 8px 20px rgba(215, 231, 228, 0.2); /* 悬停高亮感 */
+}
+
+
+.sensor-icon {
+  margin-right: 14px;
+}
+
+.sensor-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 新增的样式 */
+.sensor-strong-text {
+  font-size: 18px !important;
+  color: #ff4d4f !important; /* 示例颜色，您可以根据需要调整 */
+  font-weight: bold !important;
+}
+
+.sensor-normal-text {
+  font-size: 18px !important;
+  color: #64ffda !important; /* 您的颜色 */
+}
+
+.param-item,
+.weather-row {
+  font-size: 14px !important;
+  color: #64ffda !important;
+}
+
+
+/* 确保 Ant Design 的 Text 组件样式被覆盖 */
+.ant-typography {
+  font-size: 15px !important;
+  color: #64ffda !important;
+}
+
+
+/* 修改 Card 的标题样式 */
+.ant-card-head-title {
+  font-size: 20px !important;    /* 字体大小 */
+  font-weight: bold !important;  /* 加粗 */
+  color: #64ffda !important;     /* 颜色 */
+  margin-bottom: 16px !important; /* 可选：底部间距 */
+}

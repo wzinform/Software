@@ -1,0 +1,30 @@
+
+
+/* 按钮宽度固定，不太宽 */
+.query-button-profile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  padding: 0.6rem 0;
+  border: 2px solid #64ffda;
+  color: #64ffda;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #1a2539;
+  text-align: center;
+  margin-right: 40px; /* 16px相当于gap-4 */
+}
+
+/* 去掉最后一个按钮右边的 margin */
+.query-button-file:last-child {
+  margin-right: 0;
+}
+
+.query-button-file:hover {
+  background-color: #64ffda;
+  color: #0a192f;
+}
+
