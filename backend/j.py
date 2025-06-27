@@ -148,8 +148,8 @@ if __name__ == "__main__":
     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
-    # JSON文件夹路径
-    JSON_FOLDER_PATH = "D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2021-03"
-
-    # 处理并导入数据
-    process_json_files(JSON_FOLDER_PATH, DB_CONFIG, SQL)
+    # # JSON文件夹路径
+    # JSON_FOLDER_PATH = "D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2021-03"
+    #
+    # # 处理并导入数据
+    # process_json_files(JSON_FOLDER_PATH, DB_CONFIG, SQL)

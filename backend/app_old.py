@@ -633,56 +633,56 @@ def update_temperature():
         return jsonify({"code": 500, "message": f"更新失败: {str(e)}"})
 
 
-@app.route('/api/update-ph', methods=['POST'])
-def update_ph():
-    try:
-        data = request.get_json()
-        section_name = data.get('section_name')
-        new_ph = data.get('pH')
-
-        if not section_name or new_ph is None:
-            return jsonify({"code": 400, "message": "需要提供section_name和pH参数"})
-
-        # 获取该断面的最新数据
-        latest_data = WaterQuality.query.filter(
-            WaterQuality.section_name.ilike(f"%{section_name}%")
-        ).order_by(
-            WaterQuality.monitor_time.desc()
-        ).first()
-
-        if not latest_data:
-            return jsonify({"code": 404, "message": "未找到该断面的数据"})
-
-        # 创建新记录（复制最新数据并更新pH值）
-        new_record = WaterQuality(
-            province=latest_data.province,
-            basin=latest_data.basin,
-            section_name=latest_data.section_name,
-            monitor_time=datetime.utcnow(),  # 使用当前时间
-            water_quality_level=latest_data.water_quality_level,
-            temperature=latest_data.temperature,
-            pH=new_ph,  # 更新pH值
-            dissolved_oxygen=latest_data.dissolved_oxygen,
-            conductivity=latest_data.conductivity,
-            turbidity=latest_data.turbidity,
-            permanganate_index=latest_data.permanganate_index,
-            ammonia_nitrogen=latest_data.ammonia_nitrogen,
-            total_phosphorus=latest_data.total_phosphorus,
-            total_nitrogen=latest_data.total_nitrogen,
-            chlorophyll_a=latest_data.chlorophyll_a,
-            algae_density=latest_data.algae_density,
-            station_status=latest_data.station_status
-        )
-
-        db.session.add(new_record)
-        db.session.commit()
-
-        return jsonify({"code": 200, "message": "pH值更新成功", "data": new_record.to_dict()})
-
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"code": 500, "message": f"更新失败: {str(e)}"})
-
+# @app.route('/api/update-ph', methods=['POST'])
+# def update_ph():
+#     try:
+#         data = request.get_json()
+#         section_name = data.get('section_name')
+#         new_ph = data.get('pH')
+#
+#         if not section_name or new_ph is None:
+#             return jsonify({"code": 400, "message": "需要提供section_name和pH参数"})
+#
+#         # 获取该断面的最新数据
+#         latest_data = WaterQuality.query.filter(
+#             WaterQuality.section_name.ilike(f"%{section_name}%")
+#         ).order_by(
+#             WaterQuality.monitor_time.desc()
+#         ).first()
+#
+#         if not latest_data:
+#             return jsonify({"code": 404, "message": "未找到该断面的数据"})
+#
+#         # 创建新记录（复制最新数据并更新pH值）
+#         new_record = WaterQuality(
+#             province=latest_data.province,
+#             basin=latest_data.basin,
+#             section_name=latest_data.section_name,
+#             monitor_time=datetime.utcnow(),  # 使用当前时间
+#             water_quality_level=latest_data.water_quality_level,
+#             temperature=latest_data.temperature,
+#             pH=new_ph,  # 更新pH值
+#             dissolved_oxygen=latest_data.dissolved_oxygen,
+#             conductivity=latest_data.conductivity,
+#             turbidity=latest_data.turbidity,
+#             permanganate_index=latest_data.permanganate_index,
+#             ammonia_nitrogen=latest_data.ammonia_nitrogen,
+#             total_phosphorus=latest_data.total_phosphorus,
+#             total_nitrogen=latest_data.total_nitrogen,
+#             chlorophyll_a=latest_data.chlorophyll_a,
+#             algae_density=latest_data.algae_density,
+#             station_status=latest_data.station_status
+#         )
+#
+#         db.session.add(new_record)
+#         db.session.commit()
+#
+#         return jsonify({"code": 200, "message": "pH值更新成功", "data": new_record.to_dict()})
+#
+#     except Exception as e:
+#         db.session.rollback()
+#         return jsonify({"code": 500, "message": f"更新失败: {str(e)}"})
+#
 
 
 
@@ -956,41 +956,41 @@ def get_advice():
         return jsonify({'error': '获取建议失败，请稍后重试'}), 500
 
 
+#
+# @app.route('/api/water-data', methods=['GET'])
+# def get_water_data():
+#     try:
+#         # 获取前端传递的站点名称参数
+#         section_name = request.args.get('station')
+#         if not section_name:
+#             return jsonify({"code": 400, "message": "需要提供 station 参数"}), 400
+#
+#         # 查询指定站点的最新水文数据
+#         latest_water_data = WaterQuality.query.filter_by(section_name=section_name).order_by(WaterQuality.monitor_time.desc()).first()
+#
+#         if not latest_water_data:
+#             return jsonify({"code": 404, "message": f"站点 '{section_name}' 暂无数据"}), 404
+#
+#         # 构造返回数据
+#         water_data = {
+#             "dissolved_oxygen": latest_water_data.dissolved_oxygen,
+#             "turbidity": latest_water_data.turbidity,
+#             "pH": latest_water_data.pH,
+#             "temperature": latest_water_data.temperature
+#         }
+#
+#         return jsonify({
+#             "code": 200,
+#             "data": water_data
+#         })
+#
+#     except Exception as e:
+#         return jsonify({"code": 500, "message": f"服务器错误: {str(e)}"}), 500
 
-@app.route('/api/water-data', methods=['GET'])
-def get_water_data():
-    try:
-        # 获取前端传递的站点名称参数
-        section_name = request.args.get('station')
-        if not section_name:
-            return jsonify({"code": 400, "message": "需要提供 station 参数"}), 400
 
-        # 查询指定站点的最新水文数据
-        latest_water_data = WaterQuality.query.filter_by(section_name=section_name).order_by(WaterQuality.monitor_time.desc()).first()
-
-        if not latest_water_data:
-            return jsonify({"code": 404, "message": f"站点 '{section_name}' 暂无数据"}), 404
-
-        # 构造返回数据
-        water_data = {
-            "dissolved_oxygen": latest_water_data.dissolved_oxygen,
-            "turbidity": latest_water_data.turbidity,
-            "pH": latest_water_data.pH,
-            "temperature": latest_water_data.temperature
-        }
-
-        return jsonify({
-            "code": 200,
-            "data": water_data
-        })
-
-    except Exception as e:
-        return jsonify({"code": 500, "message": f"服务器错误: {str(e)}"}), 500
-
-
-@app.route('/')
-def index():
-    return 'Flask + XAMPP MySQL 连接成功！'
+# @app.route('/')
+# def index():
+#     return 'Flask + XAMPP MySQL 连接成功！'
 
 
 if __name__ == '__main__':

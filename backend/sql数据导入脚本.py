@@ -219,62 +219,62 @@ if __name__ == "__main__":
 
 
 
-#
-# import json
-# import csv
-# import re
-# import os
-#
-# # HTML 清洗函数
-# # HTML 清洗 + 替换 '--' 为 '*'
-# def clean_html(cell):
-#     if isinstance(cell, str):
-#         # 提取 HTML 标签中的内容
-#         match = re.search(r'>([^<]+)<', cell)
-#         text = match.group(1).strip() if match else re.sub(r'<[^>]*>', '', cell).strip()
-#         return '*' if text == '--' else text
-#     return cell
-#
-# # 设置输入文件夹路径和输出文件名
-# input_folder = 'D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2020-05'  # 你可以改为你的 JSON 文件夹路径
-# output_filename = 'D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2020-05/out2.csv'
-#
-# # 初始化数据集合
-# merged_rows = []
-# header_written = False
-# csv_headers = []
-#
-# # 遍历文件夹中所有 JSON 文件
-# for filename in os.listdir(input_folder):
-#     if filename.endswith('.json'):
-#         file_path = os.path.join(input_folder, filename)
-#         with open(file_path, 'r', encoding='utf-8') as f:
-#             try:
-#                 data = json.load(f)
-#                 thead = data.get("thead", [])
-#                 tbody = data.get("tbody", [])
-#
-#                 # 清洗表头
-#                 cleaned_thead = [clean_html(header) for header in thead]
-#
-#                 # 只在第一次写入表头
-#                 if not header_written:
-#                     csv_headers = cleaned_thead
-#                     header_written = True
-#
-#                 # 清洗表体
-#                 cleaned_rows = [[clean_html(cell) for cell in row] for row in tbody]
-#                 merged_rows.extend(cleaned_rows)
-#
-#                 print(f"✅ 已处理：{filename}")
-#
-#             except Exception as e:
-#                 print(f"⚠️ 读取文件 {filename} 出错: {e}")
-#
-# # 写入到 CSV
-# with open(output_filename, 'w', encoding='utf-8-sig', newline='') as csvfile:
-#     writer = csv.writer(csvfile)
-#     writer.writerow(csv_headers)
-#     writer.writerows(merged_rows)
-#
-# print(f"\n🎉 所有 JSON 文件已导出到：{output_filename}")
+
+import json
+import csv
+import re
+import os
+
+# HTML 清洗函数
+# HTML 清洗 + 替换 '--' 为 '*'
+def clean_html(cell):
+    if isinstance(cell, str):
+        # 提取 HTML 标签中的内容
+        match = re.search(r'>([^<]+)<', cell)
+        text = match.group(1).strip() if match else re.sub(r'<[^>]*>', '', cell).strip()
+        return '*' if text == '--' else text
+    return cell
+
+# 设置输入文件夹路径和输出文件名
+input_folder = 'D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2020-05'  # 你可以改为你的 JSON 文件夹路径
+output_filename = 'D:/桌面/软件工程/f7ee1bebe4a9404083f70b4961b92c86 (1)/软件工程大作业数据/水质数据/2020-05/out2.csv'
+
+# 初始化数据集合
+merged_rows = []
+header_written = False
+csv_headers = []
+
+# 遍历文件夹中所有 JSON 文件
+for filename in os.listdir(input_folder):
+    if filename.endswith('.json'):
+        file_path = os.path.join(input_folder, filename)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            try:
+                data = json.load(f)
+                thead = data.get("thead", [])
+                tbody = data.get("tbody", [])
+
+                # 清洗表头
+                cleaned_thead = [clean_html(header) for header in thead]
+
+                # 只在第一次写入表头
+                if not header_written:
+                    csv_headers = cleaned_thead
+                    header_written = True
+
+                # 清洗表体
+                cleaned_rows = [[clean_html(cell) for cell in row] for row in tbody]
+                merged_rows.extend(cleaned_rows)
+
+                print(f"✅ 已处理：{filename}")
+
+            except Exception as e:
+                print(f"⚠️ 读取文件 {filename} 出错: {e}")
+
+# 写入到 CSV
+with open(output_filename, 'w', encoding='utf-8-sig', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(csv_headers)
+    writer.writerows(merged_rows)
+
+print(f"\n🎉 所有 JSON 文件已导出到：{output_filename}")
